@@ -1,0 +1,9 @@
+@using Northwind.Models
+@model IEnumerable<Category>
+
+<ul>
+    @foreach (Category category in Model)
+    {
+        <li>@category.CategoryName</li>
+    }
+</ul>
