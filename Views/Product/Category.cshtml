@@ -1,9 +1,9 @@
 @using Northwind.Models
 @model IEnumerable<Category>
 
-<ul class="list-group">
+<ul>
     @foreach (Category category in Model)
     {
-        <li class="list-group-item">@category.CategoryName</li>
+        <li>@category.CategoryName</li>
     }
 </ul>
