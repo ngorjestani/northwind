@@ -15,6 +15,8 @@ namespace Northwind.Controllers
             public IActionResult Index(int id) => View(_northwindContext.Products
                 .Where(p => p.CategoryId == id && !p.Discontinued)
                 .OrderBy(p => p.ProductName));
+
+            public IActionResult Discount() => View(_northwindContext.Discounts);
     }
     
 }
