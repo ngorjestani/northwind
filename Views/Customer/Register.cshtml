@@ -1,0 +1,58 @@
+﻿@page
+@model Northwind.Views.Customer.Register
+
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="CompanyName">Company Name</label>
+                    <input type="text" class="form-control" id="CompanyName">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group">
+                    <label for="Address">Address</label>
+                    <input type="text" class="form-control" id="Address">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="City">City</label>
+                    <input type="text" class="form-control" id="City">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="Region">Region</label>
+                    <input type="text" class="form-control" id="Region">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="PostalCode">Postal Code</label>
+                    <input type="text" class="form-control" id="PostalCode">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="Country">Country</label>
+                    <input type="text" class="form-control" id="Country">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Phone">Phone</label>
+            <input type="tel" class="form-control" id="Phone">
+        </div>
+        <div class="form-group">
+            <label for="Fax">Fax</label>
+            <input type="tel" class="form-control" id="Fax">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
