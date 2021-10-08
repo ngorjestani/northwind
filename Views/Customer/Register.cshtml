@@ -1,13 +1,12 @@
-﻿@page
-@model Northwind.Views.Customer.Register
+﻿@model Northwind.Models.Customer
 
-<form>
+<form method="post" asp-action="AddCustomer">
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label for="CompanyName">Company Name</label>
-                    <input type="text" class="form-control" id="CompanyName">
+                    <label asp-for="@Model.CompanyName">Company Name</label>
+                    <input asp-for="@Model.CompanyName" type="text" class="form-control" id="CompanyName">
                 </div>
             </div>
         </div>
