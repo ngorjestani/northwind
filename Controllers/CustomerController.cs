@@ -1,11 +1,10 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Northwind.Models; 
+using Northwind.Models;
 using System.Linq;
 
-namespace Northwind.Controllers 
+namespace Northwind.Controllers
 {
-    
     public class CustomerController : Controller
     {
         private NorthwindContext _northwindContext;
@@ -13,16 +12,25 @@ namespace Northwind.Controllers
 
         public IActionResult Register() => View();
 
-        public IActionResult CustomerList() => View(_northwindContext.Customers);
-
         [HttpPost]
-        [ValidateAntiForgeryToken] 
-        public IActionResult AddCustomer(Customer customer)
+        [ValidateAntiForgeryToken]
+        public IActionResult Register(Customer customer)
         {
-            Console.WriteLine("Adding customer");
-            _northwindContext.AddCustomer(customer);
-            return RedirectToAction("CustomerList");
+            if (_northwindContext.Customers.Any(c => c.CompanyName == customer.CompanyName))
+            {
+                ModelState.AddModelError("", "Company name must be unique");
+            }
+            else
+            {
+                _northwindContext.AddCustomer(customer);
+                return RedirectToAction("Customers");
+            }
+
+            return View();
         }
+
+        public IActionResult Customers() => View(_northwindContext.Customers);
+
+        
     }
-    
 }

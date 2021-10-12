@@ -16,7 +16,6 @@ namespace Northwind.Models
         public void AddCustomer(Customer customer)
         {
             this.Add(customer);
-            Console.WriteLine("Customer added");
             this.SaveChanges();
         }
     }
