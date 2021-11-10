@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\NorthwindContextModelSnapshot.cs" />
+  </ItemGroup>
+
 </Project>
