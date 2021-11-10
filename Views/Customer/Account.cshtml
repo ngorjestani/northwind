@@ -2,9 +2,7 @@
 @model Customer
 <h2 class="mt-3"><i class="far fa-address-card"></i> Customer Account</h2>
 
-@Model.CustomerId
-
-@* <form method="post" asp-action="Account">
+ <form method="post" asp-action="Account">
     <div asp-validation-summary="All" style="color:red;"></div>
     <input type="hidden" name="CustomerId" value="@Model.CustomerId" />
     <div class="form-row">
@@ -47,4 +45,4 @@
     </div>
 
     <button type="submit" class="btn btn-outline-primary">Save</button>
-</form> *@
+</form> 
