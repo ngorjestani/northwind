@@ -25,6 +25,8 @@
                     </div>
                 </div>
             </th>
+            <th scope="col" class="text-right">Price</th>
+            <th scope="col" class="text-right">Stock</th>
         </tr>
     </thead>
     <tbody id="product_rows" data-id="@ViewBag.id"></tbody>
@@ -36,9 +38,9 @@
         getProducts()
         function getProducts() {
             var id = $('#product_rows').data('id');
-            
+            var discontinued = $('#Discontinued').prop('checked') ? "" : "/discontinued/false";
             $.getJSON({
-                url: "../../api/category/" + id + "/product/discontinued/false",
+                url: "../../api/category/" + id + "/product" + discontinued,
                 success: function (response, textStatus, jqXhr) {
                     $('#product_rows').html("");
                     for (var i = 0; i < response.length; i++){
@@ -56,11 +58,13 @@
                 }
             });
         }
-        
         $('#CategoryId').on('change', function(){
-                    $('#product_rows').data('id', $(this).val());
-                    getProducts();
-                });
+            $('#product_rows').data('id', $(this).val());
+            getProducts();
+        });
+        $('#Discontinued').on('change', function(){
+            getProducts();
+        });
     });
     </script>
 }
