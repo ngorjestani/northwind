@@ -35,12 +35,22 @@
     });
     // delegated event listener
     $('#product_rows').on('click', 'tr', function(){
-        $('#ProductId').html($(this).data('id'));
+        // make sure a customer is logged in
         $('#ProductName').html($(this).data('name'));
-        $('#UnitPrice').html($(this).data('price').toFixed(2));
-        // calculate and display total in modal
-        $('#Quantity').change();
-        $('#cartModal').modal();
+        if ($('#User').data('customer').toLowerCase() == "true"){
+            $('#UnitPrice').html($(this).data('price').toFixed(2));
+            $('#ProductId').html($(this).data('id'));
+            // calculate and display total in modal
+            $('#ProductName').html($(this).data('name'));
+            $('#Quantity').change();
+            $('#UnitPrice').html($(this).data('price').toFixed(2));
+            $('#cartModal').modal();
+            // calculate and display total in modal
+            $('#Quantity').change();
+            $('#cartModal').modal();
+        } else {
+            alert("Only signed in customers can add items to the cart");
+        }
     });
     // update total when cart quantity is changed
     $('#Quantity').change(function () {
@@ -51,4 +61,25 @@
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
+    $('#addToCart').on('click', function(){
+        $('#cartModal').modal('hide');
+        $.ajax({
+            headers: { "Content-Type": "application/json" },
+            url: "../../api/addtocart",
+            type: 'post',
+            data: JSON.stringify({
+                "id": Number($('#ProductId').html()),
+                "email": $('#User').data('email'),
+                "qty": Number($('#Quantity').val())
+            }),
+            success: function (response, textStatus, jqXhr) {
+                // success
+                console.log(response);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                // log the error to the console
+                console.log("The following error occured: " + jqXHR.status, errorThrown);
+            }
+        });
+    });
 });
