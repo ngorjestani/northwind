@@ -36,5 +36,9 @@ namespace Northwind.Controllers
         public IEnumerable<Product> GetByCategoryDiscontinued(int CategoryId, bool discontinued) => _northwindContext.Products
             .Where(p => p.CategoryId == CategoryId && p.Discontinued == discontinued)
             .OrderBy(p => p.ProductName);
+        
+        [HttpPost, Route("api/addtocart")]
+        // adds a row to the cartitem table
+        public CartItem Post([FromBody] CartItemJSON cartItem) => _northwindContext.AddToCart(cartItem);
     }
 }
