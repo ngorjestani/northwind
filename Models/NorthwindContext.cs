@@ -37,7 +37,7 @@ namespace Northwind.Models
         {
             CartItem cartItem = new CartItem()
             {
-                CustomerId = Customers.FirstOrDefault(c => c.Email == cartItemJSON.email).CustomerID,
+                CustomerId = Customers.FirstOrDefault(c => c.Email == cartItemJSON.email).CustomerId,
                 ProductId = cartItemJSON.id,
                 Quantity = cartItemJSON.qty
             };
