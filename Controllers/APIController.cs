@@ -29,7 +29,12 @@ namespace Northwind.Controllers
         public IEnumerable<Product> GetByStock(bool inStock) => _northwindContext.Products
             .Where(p => (p.UnitsInStock > 0) == inStock)
             .OrderBy(p => p.ProductName);
-        
+
+        [HttpGet, Route("api/product/inventory/low_stock/{lowStock}")]
+        public IEnumerable<Product> GetByLowStock(bool lowStock) => _northwindContext.Products
+            .Where(p => (p.UnitsInStock <= p.ReorderLevel) == lowStock)
+            .OrderBy(p => p.ProductName);
+
         [HttpGet, Route("api/category/{CategoryId}/product")]
         // returns all products in a specific category
         public IEnumerable<Product> GetByCategory(int CategoryId) => _northwindContext.Products
