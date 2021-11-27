@@ -17,6 +17,6 @@ namespace Northwind.Controllers
             _userManager = usrMgr;
         }
         [Authorize(Roles = "northwind-employee")]
-        public IActionResult Account() => View(_northwindContext.Employees.FirstOrDefault(c => c.Email == User.Identity.Name));
+        public IActionResult Inventory() => View();
     }
 }
