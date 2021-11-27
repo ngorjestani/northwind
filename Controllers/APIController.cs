@@ -27,12 +27,12 @@ namespace Northwind.Controllers
 
         [HttpGet, Route("api/product/inventory/in_stock/{inStock}")]
         public IEnumerable<Product> GetByStock(bool inStock) => _northwindContext.Products
-            .Where(p => (p.UnitsInStock > 0) == inStock)
+            .Where(p => (p.UnitsInStock > 0) == inStock && !p.Discontinued)
             .OrderBy(p => p.ProductName);
 
         [HttpGet, Route("api/product/inventory/low_stock/{lowStock}")]
         public IEnumerable<Product> GetByLowStock(bool lowStock) => _northwindContext.Products
-            .Where(p => (p.UnitsInStock <= p.ReorderLevel) == lowStock)
+            .Where(p => (p.UnitsInStock <= p.ReorderLevel) == lowStock && !p.Discontinued)
             .OrderBy(p => p.ProductName);
 
         [HttpGet, Route("api/category/{CategoryId}/product")]
