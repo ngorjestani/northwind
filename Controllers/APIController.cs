@@ -24,6 +24,11 @@ namespace Northwind.Controllers
         public IEnumerable<Product> GetDiscontinued(bool discontinued) => _northwindContext.Products
             .Where(p => p.Discontinued == discontinued)
             .OrderBy(p => p.ProductName);
+
+        [HttpGet, Route("api/product/inventory/in_stock/{inStock}")]
+        public IEnumerable<Product> GetByStock(bool inStock) => _northwindContext.Products
+            .Where(p => (p.UnitsInStock > 0) == inStock)
+            .OrderBy(p => p.ProductName);
         
         [HttpGet, Route("api/category/{CategoryId}/product")]
         // returns all products in a specific category
