@@ -30,9 +30,9 @@ namespace Northwind.Controllers
             .Where(p => (p.UnitsInStock > 0) == inStock && !p.Discontinued)
             .OrderBy(p => p.ProductName);
 
-        [HttpGet, Route("api/product/inventory/low_stock/{lowStock}")]
-        public IEnumerable<Product> GetByLowStock(bool lowStock) => _northwindContext.Products
-            .Where(p => (p.UnitsInStock <= p.ReorderLevel) == lowStock && !p.Discontinued)
+        [HttpGet, Route("api/product/inventory/low_stock")]
+        public IEnumerable<Product> GetByLowStock() => _northwindContext.Products
+            .Where(p => (p.UnitsInStock <= p.ReorderLevel && p.UnitsInStock > 0) && !p.Discontinued)
             .OrderBy(p => p.ProductName);
 
         [HttpGet, Route("api/category/{CategoryId}/product")]
