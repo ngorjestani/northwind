@@ -7,19 +7,21 @@
         <th scope="col">
             <div class="form-row">
                 <div class="form-group col-md-8 mb-0">
-                    <div class="form-group">
-                        <div class="form-check form-check-inline text-right">
-                            <input class="form-check-input" type="checkbox" id="in-stock" checked>
-                            <label class="form-check-label" for="in-stock">In Stock</label>
-                        </div>
-                        <div class="form-check form-check-inline text-right">
-                            <input class="form-check-input" type="checkbox" id="low-stock" checked>
-                            <label class="form-check-label" for="low-stock">Low Stock</label>
-                        </div>
-                        <div class="form-check form-check-inline text-right">
-                            <input class="form-check-input" type="checkbox" id="zero-stock" checked>
-                            <label class="form-check-label" for="zero-stock">Out of Stock</label>
-                        </div>
+                    <div class="form-check form-check-inline text-right">
+                        <input class="form-check-input" value="0" type="radio" name="stock-select" id="all-products" checked>
+                        <label class="form-check-label" for="all-products">All products</label>
+                    </div>
+                    <div class="form-check form-check-inline text-right">
+                        <input class="form-check-input" value="1" type="radio" name="stock-select" id="in-stock">
+                        <label class="form-check-label" for="in-stock">In stock</label>
+                    </div>
+                    <div class="form-check form-check-inline text-right">
+                        <input class="form-check-input" value="2" type="radio" name="stock-select" id="low-stock">
+                        <label class="form-check-label" for="low-stock">Low Stock</label>
+                    </div>
+                    <div class="form-check form-check-inline text-right">
+                        <input class="form-check-input" value="3" type="radio" name="stock-select" id="zero-stock">
+                        <label class="form-check-label" for="zero-stock">Out of Stock</label>
                     </div>
                 </div>
             </div>
@@ -28,7 +30,13 @@
         </th>
         <th scope="col" class="text-right">Price</th>
         <th scope="col" class="text-right">Stock</th>
+        <th scope="col" class="text-right">Reorder Level</th>
     </tr>
     </thead>
-    <tbody id="product_rows"></tbody>
+    <tbody id="product_rows" data-id="@ViewBag.id"></tbody>
 </table>
+
+@section scripts
+{
+    <script src="../../js/inventory.js"></script>
+}

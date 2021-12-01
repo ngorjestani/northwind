@@ -18,8 +18,9 @@ namespace Northwind.Controllers
         }
 
         [Authorize(Roles = "northwind-employee")]
-        public IActionResult Inventory()
+        public IActionResult Inventory(int id)
         {
+            ViewBag.id = id;
             return View(_northwindContext.Categories.OrderBy(c => c.CategoryName));
         } 
     }
