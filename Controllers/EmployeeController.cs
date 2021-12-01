@@ -16,7 +16,12 @@ namespace Northwind.Controllers
             _northwindContext = db;
             _userManager = usrMgr;
         }
+
         [Authorize(Roles = "northwind-employee")]
-        public IActionResult Inventory() => View();
+        public IActionResult Inventory(int id)
+        {
+            ViewBag.id = id;
+            return View(_northwindContext.Categories.OrderBy(c => c.CategoryName));
+        } 
     }
 }
