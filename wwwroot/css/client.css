@@ -80,5 +80,9 @@ a.navbar-brand {
 }
 
 .low-stock {
+  color: orange;
+}
+
+.no-stock {
   color: red;
 }

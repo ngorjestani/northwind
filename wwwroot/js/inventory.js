@@ -24,7 +24,14 @@ $(function () {
     }
     
     function checkLowStock(item) {
-        return item.unitsInStock <= item.reorderLevel ? 'low-stock ' : '';
+        var className = '';
+        if (item.unitsInStock <= item.reorderLevel && item.unitsInStock >0) {
+            return 'low-stock';
+        } else if (item.unitsInStock === 0) {
+            return 'no-stock';
+        } else {
+            return '';
+        }
     }
     
     function loopThroughProducts(response) {
