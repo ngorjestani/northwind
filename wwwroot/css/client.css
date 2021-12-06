@@ -78,3 +78,17 @@ a.navbar-brand {
 #product_rows tr {
   cursor: pointer;
 }
+
+.low-stock {
+  background-color: orange;
+}
+
+.no-stock {
+  background-color: red;
+}
+
+.toast {
+    position: absolute;
+    top: 85px;
+    right: 10px;
+}
