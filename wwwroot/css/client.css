@@ -80,9 +80,15 @@ a.navbar-brand {
 }
 
 .low-stock {
-  color: orange;
+  background-color: orange;
 }
 
 .no-stock {
-  color: red;
+  background-color: red;
+}
+
+.toast {
+    position: absolute;
+    top: 85px;
+    right: 10px;
 }
